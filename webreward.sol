@@ -807,10 +807,10 @@ contract WebReward is IERC20Extended, Auth {
 
         rewardToken = rewardToken_;
         router = IUniswapV2Router02(router_);
-        // pair = IUniswapV2Factory(router.factory()).createPair(
-        //     address(this),
-        //     router.WETH()
-        // );
+        pair = IUniswapV2Factory(router.factory()).createPair(
+             address(this),
+             router.WETH()
+        );
         distributor = new DividendDistributor(rewardToken_, router_);
 
         _initializeFees(feeSettings_);
